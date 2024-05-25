@@ -1,13 +1,31 @@
-from flask import Flask
+from flask import Flask, request, jsonify
+import distortion
+import panorama
+#from test import match_image
 
 app = Flask(__name__)
 
 @app.route('/Flask/Generate', methods = ['POST'])
 def Generate_Panoramic_Image() : 
+    data = request.json
 
-    # 이곳을 기준으로 작업 진행 해 주시면 됩니다. 이곳에 모든 기능(코드)를 넣지 말고 추가로 파이썬 파일을 만들어서 import해서 사용하는 방식으로 하시면 됩니다.
-     
-    return 200
+    result = panorama.create_panorama(data['fileUrls'], data['cookie'])
+
+    if(result) :
+        return jsonify(fileUrl = result), 200
+    else :
+        return jsonify(message = 'Image stitching error'), 500
+    
+@app.route('/Flask/Distortion', methods = ['POST'])
+def Distortion_Image() :
+    data = request.json
+
+    result = distortion.image_distortion(data['fileUrl'], data['cookie'])
+
+    if(result) :
+        return jsonify(fileUrl = result), 200
+    else :
+        return jsonify(message = 'Image distortion error'), 500
 
 if __name__ == '__main__' : 
-    app.run(host = '127.0.0.1', port = 5000, debug = True)
+    app.run(host = '0.0.0.0', port = 5000, debug = True)
