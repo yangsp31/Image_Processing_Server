@@ -59,7 +59,7 @@
 
   <br><br>
 
-# 회고 & 개선 필요사항 (회고 원문 : [Velog](https://velog.io/@yang_seongp31/ReLife-Image-Processing-Server-Flask))
+# 회고 & 개선 필요사항/방법 (회고 원문 : [Velog](https://velog.io/@yang_seongp31/ReLife-Image-Processing-Server-Flask))
 
 * ### Image Stitching
   * Image Stitching 진행 후, 결과 이미지는 왜곡되어 붙여졌기 때문에 이미지의 가장자리 영역에 불균형한 빈 공간을 의미하는 검은색으로 나타남.
@@ -71,7 +71,7 @@
   * 결론적으로, 보간법을 활용하여 최대한 이미지를 비율과 화질을 유지하며 늘리는 방법을 시도 하였다면 좋았을 것이라 판단.
 <br><br>
 
-* ### 개선사항
+* ### 개선 필요사항/방법
   * Image Stitching 후 발생하는 빈 공간을 보간법을 활용해, 원본 이미지의 비율과 화질을 최대한 유지하며 줄이는 방식으로 구축.
 
 
